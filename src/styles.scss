@@ -3,7 +3,7 @@
 @use "@angular/material" as mat;
 
 html {
-    color-scheme: light;
+    color-scheme: dark;
     @include mat.theme(
         (
             color: (
@@ -16,15 +16,11 @@ html {
     );
 }
 
-.dark-theme {
-    color-scheme: dark;
-}
-
-.mat-mdc-raised-button {
+.btn-primary {
     @include mat.button-overrides(
         (
-            protected-container-color: var(--mat-sys-primary),
-            protected-label-text-color: white,
+            protected-container-color: #182465,
+            protected-label-text-color: #e5e1e6,
             protected-label-text-size: 1.3rem,
             protected-container-shape: 10px,
             protected-container-height: 48px,
@@ -35,22 +31,13 @@ html {
 .btn-secondary {
     @include mat.button-overrides(
         (
-            protected-container-color: var(--mat-sys-secondary),
-            protected-label-text-color: white,
+            protected-container-color: var(--mat-sys-primary),
+            protected-label-text-color: var(--mat-sys-on-primary),
             protected-label-text-size: 1.3rem,
             protected-container-shape: 10px,
             protected-container-height: 48px,
         )
     );
-}
-
-.dark-theme .mat-mdc-raised-button {
-    @include mat.button-overrides(
-        (
-            protected-container-color: #182465,
-            protected-label-text-color: #e5e1e6
-        )
-    )
 }
 
 .mat-mdc-outlined-button {
@@ -62,16 +49,7 @@ html {
     );
 }
 
-.dark-theme .mat-mdc-outlined-button {
-    @include mat.button-overrides(
-        (
-            outlined-outline-color: var(--mat-sys-outline-variant)
-        )
-    );
-}
-
-.btn-accent,
-.dark-theme .btn-accent {
+.btn-accent {
     @include mat.button-overrides(
         (
             outlined-label-text-color: #ff4081

@@ -55,6 +55,10 @@ export class AppComponent implements OnInit {
     }
 
     async onSubmit() {
+        if (this.loading) {
+            return;
+        }
+
         this.index = this.comicForm.get('index')?.value;
 
         if (this.index < 1 || this.index > this.maxIndex) {
