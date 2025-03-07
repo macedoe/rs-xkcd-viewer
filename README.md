@@ -1,6 +1,6 @@
-# XKCD Viewer
+# XKCD Client
 
-XKCD Viewer is a Rust-based Tauri desktop application that allows users to browse XKCD comics easily. It displays the latest comic on startup and provides navigation buttons to view previous and next comics, along with an input field to jump to a specific comic.
+XKCD Client is a Rust-based Tauri desktop application that allows users to browse XKCD comics easily. It displays the latest comic on startup and provides navigation buttons to view previous and next comics, along with an input field to jump to a specific comic.
 
 ## Features
 
@@ -9,10 +9,6 @@ XKCD Viewer is a Rust-based Tauri desktop application that allows users to brows
 - 🔢 **Jump to a Comic**: Enter a comic number to load it directly.
 - 🐝 **See Title & Alt Text**: Displays the comic title and alt text.
 - 🌐 **Fetch from XKCD API**: Retrieves comics dynamically using XKCD’s JSON API.
-
-## Screenshots
-
-<!-- Add screenshots here -->
 
 ## Installation
 
@@ -29,7 +25,7 @@ Ensure you have the following installed:
 Clone the repository and run:
 
 ```sh
-git clone https://github.com/your-username/xkcd-viewer.git
+git clone https://github.com/macedoe/rs-xkcd-viewer.git
 cd xkcd-viewer
 npm install
 npm run tauri dev
