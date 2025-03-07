@@ -23,7 +23,19 @@ html {
 .mat-mdc-raised-button {
     @include mat.button-overrides(
         (
-            protected-container-color: #3d5afe,
+            protected-container-color: var(--mat-sys-primary),
+            protected-label-text-color: white,
+            protected-label-text-size: 1.3rem,
+            protected-container-shape: 10px,
+            protected-container-height: 48px,
+        )
+    );
+}
+
+.btn-secondary {
+    @include mat.button-overrides(
+        (
+            protected-container-color: var(--mat-sys-secondary),
             protected-label-text-color: white,
             protected-label-text-size: 1.3rem,
             protected-container-shape: 10px,
@@ -78,5 +90,5 @@ body {
 }
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: "Noto Sans", Roboto, "Helvetica Neue", sans-serif;
 }

@@ -1,0 +1,34 @@
+<div class="comic">
+    @if (loading) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+    @if (comic) {
+        <h1>{{ comic.safe_title }}</h1>
+        <p>
+            <strong>Comic #{{ comic.num }}</strong>
+            ({{ comic.year }}-{{ comic.month }}-{{ comic.day }})
+        </p>
+        <img [src]="comic.img" [alt]="comic.alt" />
+        <p>{{ comic.alt }}</p>
+    }
+</div>
+
+<mat-divider></mat-divider>
+
+<form [formGroup]="comicForm" class="comic-form" (ngSubmit)="onSubmit()">
+    <div class="comic-form-buttons">
+        <button mat-stroked-button type="button" (click)="onPrevious()" [disabled]="index === 1">Previous</button>
+        <button mat-stroked-button type="button" (click)="onNext()" [disabled]="index === maxIndex">Next</button>
+    </div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Comic Number</mat-label>
+        <input matInput type="number" formControlName="index" placeholder="Enter comic number" min="1" [max]="maxIndex" />
+        <mat-error *ngIf="comicForm.controls['index'].hasError('required')">Comic number is required</mat-error>
+    </mat-form-field>
+
+    <div class="comic-form-buttons">
+        <button mat-raised-button type="submit">Fetch Comic</button>
+        <button mat-raised-button class="btn-secondary" (click)="onRandom()">Random</button>
+    </div>
+</form>

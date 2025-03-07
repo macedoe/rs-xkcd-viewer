@@ -1,27 +1,33 @@
 use reqwest;
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct XkcdComic {
+    pub month: String,
     pub num: u32,
-    pub title: String,
-    pub img: String,
+    pub link: String,
+    pub year: String,
+    pub news: String,
+    pub safe_title: String,
+    pub transcript: String,
     pub alt: String,
+    pub img: String,
+    pub title: String,
+    pub day: String,
 }
 
-pub async fn fetch_comic(num: Option<u32>) -> Result<XkcdComic, String> {
-    let url = match num {
-        Some(n) => format!("https://xkcd.com/{}/info.0.json", n),
-        None => "https://xkcd.com/info.0.json".to_string(),
+pub async fn fetch_comic(index: u32) -> Result<XkcdComic, String> {
+    let url = if index == 0 {
+        "https://xkcd.com/info.0.json".to_string() // Fetch latest comic
+    } else {
+        format!("https://xkcd.com/{}/info.0.json", index) // Fetch specific comic
     };
 
     match reqwest::get(&url).await {
-        Ok(response) => {
-            match response.json::<XkcdComic>().await {
-                Ok(comic) => Ok(comic),
-                Err(_) => Err("Failed to parse API response".to_string())
-            }
-        }
-        Err(_) => Err("Failed to fetch data from API".to_string())
+        Ok(response) => match response.json::<XkcdComic>().await {
+            Ok(comic) => Ok(comic),
+            Err(_) => Err("Failed to parse XKCD API response".to_string()),
+        },
+        Err(_) => Err("Failed to fetch XKCD comic".to_string()),
     }
 }
